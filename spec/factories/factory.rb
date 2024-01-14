@@ -15,18 +15,4 @@ FactoryBot.define do
     index { 0 }
     solution factory: :solution
   end
-
-  # factory :step do
-  #   sequence { 2 }
-  #   row { 1 }
-  #   index { 0 }
-  #   solution factory: :solution
-  # end
-
-  # factory :step do
-  #   sequence { 3 }
-  #   row { 2 }
-  #   index { 0 }
-  #   solution factory: :solution
-  # end
 end

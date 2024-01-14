@@ -4,5 +4,5 @@ class Solution < ApplicationRecord
   validates :number, numericality: { greater_than: 0 }
 
   belongs_to :grid
-  has_many :steps
+  has_many :steps, dependent: :destroy
 end
