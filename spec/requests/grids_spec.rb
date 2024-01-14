@@ -17,25 +17,34 @@ RSpec.describe "/grids", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Grid. As you add validations to Grid, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    {
+      outcome: true,
+      rows: '011,001,000',
+      dimension: 3
+    }
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    {
+      outcome: true,
+      rows: '0111,001,0002333',
+      dimension: 3
+    }
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
-      Grid.create! valid_attributes
+      create(:grid)
+      create(:grid)
       get grids_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
+    let(:grid) { create(:grid) }
     it "renders a successful response" do
-      grid = Grid.create! valid_attributes
       get grid_url(grid)
       expect(response).to be_successful
     end
@@ -44,14 +53,6 @@ RSpec.describe "/grids", type: :request do
   describe "GET /new" do
     it "renders a successful response" do
       get new_grid_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      grid = Grid.create! valid_attributes
-      get edit_grid_url(grid)
       expect(response).to be_successful
     end
   end
@@ -80,38 +81,6 @@ RSpec.describe "/grids", type: :request do
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post grids_url, params: { grid: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    
-    end
-  end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested grid" do
-        grid = Grid.create! valid_attributes
-        patch grid_url(grid), params: { grid: new_attributes }
-        grid.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the grid" do
-        grid = Grid.create! valid_attributes
-        patch grid_url(grid), params: { grid: new_attributes }
-        grid.reload
-        expect(response).to redirect_to(grid_url(grid))
-      end
-    end
-
-    context "with invalid parameters" do
-    
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        grid = Grid.create! valid_attributes
-        patch grid_url(grid), params: { grid: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
