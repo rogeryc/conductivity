@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Grids</h1>
+
+<div id="grids">
+  <% @grids.each do |grid| %>
+    <%= render grid %>
+    <p>
+      <%= link_to "Show this grid", grid %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New grid", new_grid_path %>
