@@ -12,19 +12,23 @@
   <% end %>
 
   <div>
-    <%= form.label :outcome, style: "display: block" %>
-    <%= form.text_field :outcome %>
+    <%= form.label :dimension, style: "display: block" %>
+    <%= form.text_field :dimension, readonly: true %>
   </div>
+
+  <br/>
 
   <div>
     <%= form.label :rows, style: "display: block" %>
+    <label style="display: block"><small>Insert rows separated by comma.</small></label>
+    <label style="display: block"><small>Example 1:</small></label>
+    <label style="display: block"><small>Dimension: 3. Rows: '001,010,011'</small></label>
+    <label style="display: block"><small>Example 2:</small></label>
+    <label style="display: block"><small>Dimension: 5. Rows: '00001,00010,00011,00100,00101'</small></label>
     <%= form.text_field :rows %>
   </div>
-
-  <div>
-    <%= form.label :dimension, style: "display: block" %>
-    <%= form.number_field :dimension %>
-  </div>
+  
+  <br/>
 
   <div>
     <%= form.submit %>

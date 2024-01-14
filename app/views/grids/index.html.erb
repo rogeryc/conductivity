@@ -2,6 +2,8 @@
 
 <h1>Grids</h1>
 
+<%= render "new_grid", grid: @grid %>
+
 <div id="grids">
   <% @grids.each do |grid| %>
     <%= render grid %>
@@ -10,5 +12,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New grid", new_grid_path %>

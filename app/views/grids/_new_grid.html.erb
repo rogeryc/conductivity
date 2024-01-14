@@ -1,0 +1,7 @@
+<%= form_for @grid, url: {action: "new"}, method: "get" do |form| %>
+  <%= form.label :dimension, style: "display: block" %>
+  <%= form.number_field :dimension, min: 2 %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

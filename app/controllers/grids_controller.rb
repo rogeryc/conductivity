@@ -4,6 +4,7 @@ class GridsController < ApplicationController
   # GET /grids or /grids.json
   def index
     @grids = Grid.all
+    @grid = Grid.new
   end
 
   # GET /grids/1 or /grids/1.json
@@ -13,6 +14,8 @@ class GridsController < ApplicationController
   # GET /grids/new
   def new
     @grid = Grid.new
+    new_grid = params[:grid]
+    @grid.dimension = new_grid.present? ? new_grid[:dimension].to_i : 3
   end
 
   # GET /grids/1/edit
