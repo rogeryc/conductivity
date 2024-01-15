@@ -31,7 +31,8 @@ rails db:seed
 ```
 
 If you're not using Windows and you're having issues with this gem, just remove it from the Gemfile list:
-`gem 'tzinfo-data', platforms: %i[windows jruby]`
+- remove `gem 'tzinfo-data', platforms: %i[windows jruby]`
+- remove `windows` from `gem 'debug', platforms: %i[mri windows]` line
 
 ## For testing
 - Run:
