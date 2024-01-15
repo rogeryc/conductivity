@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-ruby '3.3.0'
-
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '>= 5.0'
