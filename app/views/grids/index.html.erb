@@ -1,9 +1,14 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Grids</h1>
+<p style="color: red"><%= alert %></p>
 
 <%= render "new_grid", grid: @grid %>
+<%= render "new_random_grid", grid: @grid %>
 
+<p>
+  <%= render "import" %>
+</p>
+
+<h1>Grids</h1>
 <div id="grids">
   <% @grids.each do |grid| %>
     <%= render grid, rows: [] %>

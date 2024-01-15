@@ -1,0 +1,10 @@
+<h3>Import</h3>
+<label style="display: block"><small>CSV valid format: 0 and 1 values separated by coma, like:</small></label>
+<label style="display: block"><small>1,0,1</small></label>
+<label style="display: block"><small>1,1,1</small></label>
+<label style="display: block"><small>0,0,1</small></label>
+
+<%= form_tag import_grids_path, method: :post, multipart: true do %>
+  <%= file_field_tag :file, accept: ".csv" %>
+  <%= submit_tag '⚙️ Import' %>
+<% end %>

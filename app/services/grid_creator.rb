@@ -5,7 +5,7 @@ class GridCreator
     @grid = grid
   end
 
-  def create
+  def call
     return false unless @grid.save
 
     calculate_paths(@grid)

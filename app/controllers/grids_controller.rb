@@ -21,13 +21,22 @@ class GridsController < ApplicationController
     @grid.dimension = new_grid.present? ? new_grid[:dimension].to_i : 3
   end
 
+  # GET /grids/new
+  def random_new
+    @grid = Grid.new
+    new_grid = params[:grid]
+    @grid.dimension = new_grid.present? ? new_grid[:dimension].to_i : 3
+    @grid.rows = calculate_random_rows(@grid.dimension)
+    render :new
+  end
+
   # POST /grids or /grids.json
   def create
     @grid = Grid.new(grid_params)
     grid_creator = GridCreator.new(@grid)
 
     respond_to do |format|
-      if (grid = grid_creator.create)
+      if (grid = grid_creator.call)
         format.html { redirect_to grid_url(grid), notice: 'Grid was successfully created.' }
         format.json { render :show, status: :created, location: grid }
       else
@@ -47,6 +56,19 @@ class GridsController < ApplicationController
     end
   end
 
+  # POST /grids/import
+  def import
+    return redirect_to grids_url, notice: 'No file added' if params[:file].nil?
+    return redirect_to grids_url, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+    if (grid = CsvImport.new.call(params[:file]))
+      debugger
+      redirect_to grid_url(grid), notice: 'Grid was successfully created.'
+    else
+      redirect_to grids_path, alert: 'Invalid CSV file.'
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -57,5 +79,17 @@ class GridsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def grid_params
     params.require(:grid).permit(:outcome, :rows, :dimension)
+  end
+
+  def calculate_random_rows(dimension)
+    rows = ''
+    (1..dimension).each do |i|
+      rows += ',' unless rows.empty?
+
+      (1..dimension).each do |j|
+        rows += rand(2).to_s
+      end
+    end
+    rows
   end
 end
