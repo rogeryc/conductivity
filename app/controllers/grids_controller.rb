@@ -62,7 +62,6 @@ class GridsController < ApplicationController
     return redirect_to grids_url, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
 
     if (grid = CsvImport.new.call(params[:file]))
-      debugger
       redirect_to grid_url(grid), notice: 'Grid was successfully created.'
     else
       redirect_to grids_path, alert: 'Invalid CSV file.'
