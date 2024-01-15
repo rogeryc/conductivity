@@ -9,7 +9,8 @@ Suggested versions:
 * Bundler: 2.5.3
 
 ## System Requirements
-- Install your preferred ruby version manager (rbenv, rvm). In this steps, we are going to use `rbenv`.
+- Install your preferred ruby version manager (rbenv, rvm). In this steps, we are going to use `rbenv`. If you already have one of these managers, just update it if needed.
+Follow these steps from [rbenv home page](https://github.com/rbenv/rbenv) for installing rbenv it in your machine if needed.
 
 ## Setting up the RoR environment
 - Optinal: run `echo "gem: --no-document" >> ~/.gemrc` to avoid installing all the gems' docs.
