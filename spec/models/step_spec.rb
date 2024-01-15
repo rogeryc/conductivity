@@ -30,8 +30,8 @@ RSpec.describe Step, type: :model do
 
     context 'when sequence is not unique' do
       let(:solution) { build(:solution) }
-      before { create(:step, solution:, sequence: 1) }
-      let(:step2) { build(:step, solution:, sequence: 1) }
+      before { create(:step, solution: solution, sequence: 1) }
+      let(:step2) { build(:step, solution: solution, sequence: 1) }
 
       it 'is invalid' do
         expect(step2).to_not be_valid
