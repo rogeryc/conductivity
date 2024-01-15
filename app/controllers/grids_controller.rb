@@ -82,10 +82,10 @@ class GridsController < ApplicationController
 
   def calculate_random_rows(dimension)
     rows = ''
-    (1..dimension).each do |i|
+    (1..dimension).each do |_i|
       rows += ',' unless rows.empty?
 
-      (1..dimension).each do |j|
+      (1..dimension).each do |_j|
         rows += rand(2).to_s
       end
     end

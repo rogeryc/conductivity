@@ -1,17 +1,18 @@
+# frozen_string_literal: true
+
 class CsvImport
   require 'csv'
 
   def call(csv_file)
-    if csv_file.present? && csv_file.respond_to?(:tempfile)
-      grid_data = parse_csv(csv_file.tempfile)
+    return unless csv_file.present? && csv_file.respond_to?(:tempfile)
 
-      if valid_grid?(grid_data)
-        @grid = Grid.create(dimension: grid_data.split(',').size , rows: grid_data)
-        
-        grid_creator = GridCreator.new(@grid).call
-        grid_creator
-      end
-    end
+    grid_data = parse_csv(csv_file.tempfile)
+
+    return unless valid_grid?(grid_data)
+
+    @grid = Grid.create(dimension: grid_data.split(',').size, rows: grid_data)
+
+    GridCreator.new(@grid).call
   end
 
   private
@@ -26,6 +27,6 @@ class CsvImport
 
   def parse_csv(file)
     data = CSV.read(file, col_sep: ',', converters: :numeric)
-    data.map { |row| row.join }.join(',')
+    data.map(&:join).join(',')
   end
 end
