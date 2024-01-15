@@ -1,17 +1,29 @@
 <div id="<%= dom_id grid %>">
   <p>
-    <strong>Outcome:</strong>
-    <%= grid.outcome %>
-  </p>
-
-  <p>
-    <strong>Rows:</strong>
-    <%= grid.rows %>
-  </p>
-
-  <p>
     <strong>Dimension:</strong>
     <%= grid.dimension %>
   </p>
 
+  <p>
+    <strong>Rows:</strong>
+    <% if rows.any? %>
+      <% rows.each do |row| %>
+        <div><%= row %></div>
+      <% end %>
+    <% else %>
+      <%= grid.rows %>
+    <% end %>
+  </p>
+
+  <% if grid.solutions.any? %>
+    <p>Expected Result: YES</p>
+    <% if grid.solutions.length > 1 %>
+      <p>(There are multiple conductive paths from the top to the bottom.)</p>
+    <% else %>
+      <p>(There is a conductive path from the top to the bottom.)</p>
+    <% end %>
+  <% else %>
+    <p>Expected Result: NO</p>
+    <p>(There is no conductive path from the top to the bottom.)</p>
+  <% end %>
 </div>

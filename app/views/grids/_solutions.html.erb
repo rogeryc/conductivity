@@ -1,0 +1,21 @@
+<h3>Solutions:</h3>
+
+<% solutions.each do |solution| %>
+  <p>
+    <strong>Number:</strong>
+    <%= solution.number %>
+  </p>
+
+  <% solution.steps.group_by(&:row).each do |row, group| %>
+    <p>
+      <% rows[row].split(//).each_with_index do |value, i| %>
+        <% if group.any? { |step| step.index == i } %>
+          <span style="color: red"><%= value %></span> 
+        <% else %>
+          <%= value %>
+        <% end %>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+

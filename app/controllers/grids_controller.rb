@@ -8,7 +8,9 @@ class GridsController < ApplicationController
   end
 
   # GET /grids/1 or /grids/1.json
-  def show; end
+  def show
+    @rows = @grid.rows.split(',')
+  end
 
   # GET /grids/new
   def new

@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @grid %>
+<%= render @grid, rows: @rows %>
+<%= render "solutions", solutions: @grid.solutions, rows: @rows %>
 
 <div>
   <%= link_to "Back to grids", grids_path %>

@@ -6,7 +6,7 @@
 
 <div id="grids">
   <% @grids.each do |grid| %>
-    <%= render grid %>
+    <%= render grid, rows: [] %>
     <p>
       <%= link_to "Show this grid", grid %>
     </p>
