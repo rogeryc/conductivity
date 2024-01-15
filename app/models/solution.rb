@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Solution < ApplicationRecord
   validates :number, presence: true
   validates :number, uniqueness: { scope: :grid_id }

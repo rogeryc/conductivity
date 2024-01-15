@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GridsController < ApplicationController
   before_action :set_grid, only: %i[show destroy]
 
@@ -26,7 +28,7 @@ class GridsController < ApplicationController
 
     respond_to do |format|
       if (grid = grid_creator.create)
-        format.html { redirect_to grid_url(grid), notice: "Grid was successfully created." }
+        format.html { redirect_to grid_url(grid), notice: 'Grid was successfully created.' }
         format.json { render :show, status: :created, location: grid }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +42,7 @@ class GridsController < ApplicationController
     @grid.destroy!
 
     respond_to do |format|
-      format.html { redirect_to grids_url, notice: "Grid was successfully destroyed." }
+      format.html { redirect_to grids_url, notice: 'Grid was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Step < ApplicationRecord
   validates :sequence, :row, :index, presence: true
   validates :sequence, uniqueness: { scope: :solution_id }

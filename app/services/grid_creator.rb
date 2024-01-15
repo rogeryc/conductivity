@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GridCreator
   def initialize(grid)
     @grid = grid
@@ -59,8 +61,8 @@ class GridCreator
   def save_solutions_from_path(paths)
     paths.each_with_index do |path, i|
       solution = @grid.solutions.create(number: i + 1)
-      path.each_with_index do |step, i|
-        solution.steps.create(sequence: i + 1, row: step[0], index: step[1])
+      path.each_with_index do |step, j|
+        solution.steps.create(sequence: j + 1, row: step[0], index: step[1])
       end
     end
   end
